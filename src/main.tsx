@@ -6,12 +6,13 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router";
+import Root from './components/root/Root';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <h1>Home Components</h1>,
+    element: <Root/>,
     errorElement:<h1 className='font-bold text-2xl text-center'>Page Not found!</h1>,
     children: [
       {
