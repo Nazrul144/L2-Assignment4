@@ -10,6 +10,8 @@ import {
   TableRow,
 } from "../ui/table";
 import { Button } from "../ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
+import { Label } from "../ui/label";
 
 interface Book {
   _id: string;
@@ -36,22 +38,53 @@ const AddBooks = () => {
 
   return (
     <div>
-      <div>
-        <div>
-          <div>Book List</div>
-          <div><Button></Button></div>
+      <div className="container mx-auto p-4 gap-4 mt-8">
+        <div className="flex justify-between items-center mb-4">
+          <div><h1 className="font-bold text-2xl">Book List</h1></div>
+          <div> <Dialog>
+            <form>
+              <DialogTrigger asChild>
+                <Button variant="outline">Open Dialog</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Edit profile</DialogTitle>
+                  <DialogDescription>
+                    Make changes to your profile here. Click save when you&apos;re
+                    done.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4">
+                  <div className="grid gap-3">
+                    <Label htmlFor="name-1">Name</Label>
+                    <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+                  </div>
+                  <div className="grid gap-3">
+                    <Label htmlFor="username-1">Username</Label>
+                    <Input id="username-1" name="username" defaultValue="@peduarte" />
+                  </div>
+                </div>
+                <DialogFooter>
+                  <DialogClose asChild>
+                    <Button variant="outline">Cancel</Button>
+                  </DialogClose>
+                  <Button type="submit">Save changes</Button>
+                </DialogFooter>
+              </DialogContent>
+            </form>
+          </Dialog></div>
         </div>
         <Table>
-          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableCaption>Complete list of books available in the library.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px]">Title</TableHead>
-              <TableHead>Author</TableHead>
-              <TableHead>Genre</TableHead>
-              <TableHead className="text-right">ISBN</TableHead>
-              <TableHead className="text-right">Copies</TableHead>
-              <TableHead className="text-right">Status</TableHead>
-              <TableHead className="text-right">Action</TableHead>
+              <TableHead className="w-[100px] font-bold text-xl">Title</TableHead>
+              <TableHead className="font-bold text-xl">Author</TableHead>
+              <TableHead className="font-bold text-xl">Genre</TableHead>
+              <TableHead className="text-right font-bold text-xl">ISBN</TableHead>
+              <TableHead className="text-right font-bold text-xl">Copies</TableHead>
+              <TableHead className="text-right font-bold text-xl">Status</TableHead>
+              <TableHead className="text-right font-bold text-xl">Action</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -66,7 +99,7 @@ const AddBooks = () => {
                   {book.available ? "Yes" : "No"}
                 </TableCell>
                 <TableCell className="text-right space-x-2">
-                  <Button className="btn btn-sm btn-primary">Edit</Button>
+                  <button className="btn btn-sm btn-primary">Edit</button>
                   <button className="btn btn-sm btn-error">Delete</button>
                   <button className="btn btn-sm btn-success" disabled={!book.available}>
                     Borrow
