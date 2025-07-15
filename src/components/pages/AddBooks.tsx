@@ -10,8 +10,9 @@ import {
   TableRow,
 } from "../ui/table";
 import { Button } from "../ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Label } from "../ui/label";
+import { Input } from "../ui/input";
 
 interface Book {
   _id: string;
