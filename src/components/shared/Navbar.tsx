@@ -111,7 +111,7 @@ const Navbar = () => {
                 }`
               }
             >
-              BooksSummary
+              Borrow Summary
             </NavLink>
 
 
