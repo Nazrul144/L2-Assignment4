@@ -39,13 +39,13 @@ const AddBooks = () => {
 
   return (
     <div>
-      <div className="container mx-auto p-4 gap-4 mt-8">
+      <div className="container mx-auto p-4 gap-4 mt-8 ">
         <div className="flex justify-between items-center mb-4">
-          <div><h1 className="font-bold text-2xl">Book List</h1></div>
+          <div><h1 className="font-bold text-xl">Book List</h1></div>
           <div> <Dialog>
             <form>
               <DialogTrigger asChild>
-                <Button variant="outline">Open Dialog</Button>
+                <Button variant="outline" className="font-bold bg-amber-400 cursor-pointer">Add New Books</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -79,13 +79,13 @@ const AddBooks = () => {
           <TableCaption>Complete list of books available in the library.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px] font-bold text-xl">Title</TableHead>
-              <TableHead className="font-bold text-xl">Author</TableHead>
-              <TableHead className="font-bold text-xl">Genre</TableHead>
-              <TableHead className="text-right font-bold text-xl">ISBN</TableHead>
-              <TableHead className="text-right font-bold text-xl">Copies</TableHead>
-              <TableHead className="text-right font-bold text-xl">Status</TableHead>
-              <TableHead className="text-right font-bold text-xl">Action</TableHead>
+              <TableHead className="w-[100px] font-bold ">Title</TableHead>
+              <TableHead className="font-bold ">Author</TableHead>
+              <TableHead className="font-bold ">Genre</TableHead>
+              <TableHead className="text-right font-bold ">ISBN</TableHead>
+              <TableHead className="text-right font-bold ">Copies</TableHead>
+              <TableHead className="text-right font-bold ">Status</TableHead>
+              <TableHead className="text-right font-bold">Action</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
