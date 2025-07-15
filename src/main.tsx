@@ -7,6 +7,9 @@ import {
   RouterProvider,
 } from "react-router";
 import Root from './components/root/Root';
+import Books from './components/pages/Books';
+import AddBooks from './components/pages/AddBooks';
+import BooksSummary from './components/pages/BooksSummary';
 
 
 const router = createBrowserRouter([
@@ -17,15 +20,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <h1>Books</h1>
+        element: <Books/>
       },
       {
         path: '/addBooks',
-        element: <h1>Add Books</h1>
+        element: <AddBooks/>
       },
       {
         path: '/booksSummery',
-        element: <h1>Books Summery</h1>
+        element: <BooksSummary/>
       },
     ],
   },
