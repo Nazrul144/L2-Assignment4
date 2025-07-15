@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+import { Button } from "../ui/button";
 
 interface Book {
   _id: string;
@@ -36,6 +37,10 @@ const AddBooks = () => {
   return (
     <div>
       <div>
+        <div>
+          <div>Book List</div>
+          <div><Button></Button></div>
+        </div>
         <Table>
           <TableCaption>A list of your recent invoices.</TableCaption>
           <TableHeader>
@@ -61,7 +66,7 @@ const AddBooks = () => {
                   {book.available ? "Yes" : "No"}
                 </TableCell>
                 <TableCell className="text-right space-x-2">
-                  <button className="btn btn-sm btn-primary">Edit</button>
+                  <Button className="btn btn-sm btn-primary">Edit</Button>
                   <button className="btn btn-sm btn-error">Delete</button>
                   <button className="btn btn-sm btn-success" disabled={!book.available}>
                     Borrow
