@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Swal from 'sweetalert2'
 import {
   Table,
   TableBody,
@@ -155,45 +156,40 @@ const AddBooks = () => {
   };
 
   const handleDeleteClick = async (bookId: string) => {
-    if (!window.confirm("Are you sure you want to delete this book?")) return;
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const res = await fetch(
+          `https://library-management-api-five.vercel.app/api/books/${bookId}`,
+          { method: "DELETE" }
+        );
 
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success"
-        });
-      }
-    });
-
-    try {
-      const res = await fetch(`https://library-management-api-five.vercel.app/api/books/${bookId}`,
-        {
-          method: "DELETE",
+        if (res.ok) {
+          toast.success("Book deleted successfully");
+          setBooks((prev) => prev.filter((book) => book._id !== bookId));
+          Swal.fire("Deleted!", "Your book has been deleted.", "success");
+        } else {
+          toast.error("Failed to delete book");
+          Swal.fire("Error!", "Failed to delete book.", "error");
         }
-      );
-      if (res.ok) {
-        toast.success("Book deleted successfully");
-      }
-      else if (!res.ok) {
+      } catch (error) {
+        console.error(error);
         toast.error("Failed to delete book");
+        Swal.fire("Error!", "Failed to delete book.", "error");
       }
-
-      setBooks((prev) => prev.filter((book) => book._id !== bookId));
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to delete book");
     }
-  }
+  });
+};
+
+
 
   return (
     <div>
